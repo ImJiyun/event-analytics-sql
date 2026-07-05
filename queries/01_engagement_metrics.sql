@@ -148,7 +148,7 @@ ORDER BY
 
 # 시간대별 사용자 활동
 SELECT
-  EXTRACT(HOUR FROM TIMESTAMP_MICROS(event_timestamp)) AS hour,
+  EXTRACT(HOUR FROM DATETIME(TIMESTAMP_MICROS(event_timestamp), "Asia/Seoul")) AS hour,
   COUNT(*) AS total_events,
   COUNT(DISTINCT user_pseudo_id) AS unique_users,  
   ROUND(100 * COUNT(*) / SUM(COUNT(*)) OVER(), 2) AS pct_of_total_events,
